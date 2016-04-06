@@ -2,30 +2,27 @@
  * DATABASE *
  ************/
 
-
 var db = require('../models');
-/* hard-coded data */
+
+
 // GET /api/albums
 function index(req, res) {
-  // FILL ME IN !
-  db.Album.find({}, function(err, allAlbums) {
-    res.json(allAlbums);
+  db.Album.find({}, function(err, albumList) {
+    res.json(albumList);
   });
 }
 
-
-
 function create(req, res) {
-  // FILL ME IN !
-  var newAlbum = new Album({
-  album: req.body.name,
-  artistName: req.body.artistName,
-  releaseDate: req.body.releaseDate,
-  genres: req.body.genres
-});
+  console.log('body', req.body);
+  db.Album.create(req.body, function(err, createdAlbum){
+    console.log('createdalbum', createdAlbum);
+    res.json(createdAlbum);
+  });
 }
 
-
+function show(req, res) {
+  // FILL ME IN !
+}
 
 function destroy(req, res) {
   // FILL ME IN !
